@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Exit
+  - Enemy
+  - Red Potion
   layers:
   - Default
   - TransparentFX
@@ -11,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Blocking
   - 
   - 
   - 
@@ -40,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 1908232119
+    locked: 0
+  - name: Items
+    uniqueID: 1363984577
+    locked: 0
+  - name: Units
+    uniqueID: 893762245
     locked: 0
