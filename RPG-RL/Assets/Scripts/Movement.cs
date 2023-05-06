@@ -15,22 +15,16 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if(!isMoving)
-        {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
 
-            if (input.x != 0) input.y = 0;
+        if (input.x != 0) input.y = 0;
 
-            if (input != Vector2.zero)
-            {
-                var targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
+        var targetPos = transform.position;
+        targetPos.x += input.x;
+        targetPos.y += input.y;
 
-                StartCoroutine(Move(targetPos));
-            }
-        }
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
     }
 
     IEnumerator Move(Vector3 targetPos)
