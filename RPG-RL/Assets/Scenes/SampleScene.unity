@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -159,7 +160,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.03773582, g: 0.011417374, b: 0.0008899956, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -200,104 +201,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 3.5, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1408978500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1408978501}
-  - component: {fileID: 1408978503}
-  - component: {fileID: 1408978502}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1408978501
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408978500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2710948, y: -1.6020188, z: 0.0013466403}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1408978502
+--- !u!114 &519420033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408978500}
+  m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856d58bdac6b218468da488e13fbac5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d4c57eef43cb1941be69ee360ce9966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1408978503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408978500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91bef884c18378d4588b53d97c8de83f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  columns: 8
-  rows: 8
-  wallCount:
-    minimum: 5
-    maximum: 9
-  potionCount:
-    minimum: 1
-    maximum: 5
-  exit: {fileID: 5510299573629663491, guid: 7d9699ba9c022574a8dbf79e27cb5e0d, type: 3}
-  floor:
-  - {fileID: 2538764507349378466, guid: b347af5bb80e0994cba9c5acf19a0bce, type: 3}
-  - {fileID: 3869186899731432534, guid: 0a366ad2a8e252e479ff65038a46b855, type: 3}
-  - {fileID: 7282731660635511766, guid: 996e1d1212feda44fae3df6fb2b92c72, type: 3}
-  - {fileID: 117079549033826083, guid: 9a86c4721d58d8c43bbc1fba8f2f0e4f, type: 3}
-  - {fileID: 5284627471932923874, guid: f069e2829e9ab3e4bbbb4862150bffbe, type: 3}
-  - {fileID: 2134108890310749186, guid: 942c02c9a4142f74093a0b8823184820, type: 3}
-  - {fileID: 3331001368615376482, guid: 5b8bcca342fcd70499017be0a7345e13, type: 3}
-  - {fileID: 6124268764369600551, guid: 1a05aaf7576a02348862bd060b60ee0f, type: 3}
-  rock:
-  - {fileID: 8376950006523571505, guid: 64ad64fd733a15a44aebeef12a5b5bce, type: 3}
-  - {fileID: 8302315395225727588, guid: 9018939dd0243c848a1185f496993132, type: 3}
-  - {fileID: 8553607008791501808, guid: c86b822a88017eb47b1ca8f524c58081, type: 3}
-  potion:
-  - {fileID: 693004429583614778, guid: feb9ae9b0f7157e4b83e055d5305d8e2, type: 3}
-  - {fileID: 8441785072215282992, guid: a274a42f817b33c4c9c8d868e1219aa2, type: 3}
-  enemy:
-  - {fileID: 8780262753855344158, guid: 46d8c1075bc008b44989d59cd90bad27, type: 3}
-  - {fileID: 1403158997917568577, guid: 95b3e476561c062498b789b15a1b6a26, type: 3}
-  wall:
-  - {fileID: 4569067911669520809, guid: f17e5740b1cffc74c947bab6f260a93c, type: 3}
-  - {fileID: 469758562888724788, guid: b4074f2871b49a8449cbb3beb5ea305e, type: 3}
-  - {fileID: 7436021788100702781, guid: cd00d163fd5857f47abefbef0d192e59, type: 3}
-  - {fileID: 2153391528950629173, guid: bfe3c88c632b7bf478b0750734d153d7, type: 3}
-  - {fileID: 407764461662299192, guid: 7a6e78d1117c8ff4d9c05e055c1fa853, type: 3}
-  - {fileID: 8549416123848885068, guid: b2cb03a11c41e454f8dd3f670cc8f327, type: 3}
-  - {fileID: 3908523505300495505, guid: 8cd6e2ccbb1ead143987e3b57b871ca0, type: 3}
-  - {fileID: 3427704080490323708, guid: 49858fd877c149046840f1d5d1f80cd0, type: 3}
+  gameManager: {fileID: 1370385462187459621, guid: af81f90961a09024d97c064d4765404e, type: 3}
