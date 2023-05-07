@@ -168,3 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.7
+  Blocking:
+    serializedVersion: 2
+    m_Bits: 0

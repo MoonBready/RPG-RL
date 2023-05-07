@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     public float moveSpeed;
-    private bool isMoving;
     private Vector2 input;
+    public LayerMask Blocking;
+    //private bool isMoving;
 
     private void Start()
     {
@@ -18,13 +21,30 @@ public class Movement : MonoBehaviour
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
-        if (input.x != 0) input.y = 0;
-
         var targetPos = transform.position;
         targetPos.x += input.x;
         targetPos.y += input.y;
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+        //if (IsWalkable(targetPos))
+            //StartCoroutine(Move(targetPos));
+
+        /*if(!isMoving)
+        {
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+
+            if(input != Vector2.zero)
+            {
+                var targetPos = transform.position;
+                targetPos.x += input.x;
+                targetPos.y += input.y;
+
+                //transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+                if (IsWalkable(targetPos))
+                    StartCoroutine(Move(targetPos));
+            }
+        }*/
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -36,6 +56,16 @@ public class Movement : MonoBehaviour
         }
         transform.position = targetPos;
 
-        isMoving = false;
+        //isMoving = false;
+    }
+
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if(Physics2D.OverlapCircle(targetPos, 0.2f, Blocking) != null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

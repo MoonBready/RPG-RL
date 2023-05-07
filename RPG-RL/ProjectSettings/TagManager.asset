@@ -7,6 +7,7 @@ TagManager:
   - Exit
   - Enemy
   - Red Potion
+  - Blocking
   layers:
   - Default
   - TransparentFX

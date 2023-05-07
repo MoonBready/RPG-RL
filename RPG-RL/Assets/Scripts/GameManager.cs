@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
     private BoardManager boardScript;
+
+    public int playerPotionNb = 10;
+    [HideInInspector] public bool playersTurn = true;
+
     private int level = 3;
 
 
@@ -27,9 +32,8 @@ public class GameManager : MonoBehaviour
         boardScript.SetupScene(level);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver()
     {
-        
+        enabled = false;
     }
 }
