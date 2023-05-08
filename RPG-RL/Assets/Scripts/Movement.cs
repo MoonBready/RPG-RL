@@ -26,6 +26,8 @@ public class Movement : MonoBehaviour
         targetPos.y += input.y;
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+
+        if (input.x != 0) input.y = 0;
         //if (IsWalkable(targetPos))
             //StartCoroutine(Move(targetPos));
 
