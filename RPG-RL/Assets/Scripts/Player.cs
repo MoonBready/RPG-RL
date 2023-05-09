@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class Player : ObjectMovement
 {
@@ -9,16 +11,18 @@ public class Player : ObjectMovement
     public int pointPerRedPotion = 1;
     public int pointPerBluePotion = 2;
     public float restartLevelDelay = 1f;
+    public TMPro.TMP_Text potionText;
 
     private Animator animator;
     private int potion;
 
     protected override void Start()
     {
-
         animator = GetComponent<Animator>();
 
         potion = GameManager.instance.playerPotionNb;
+
+        potionText.text = "Potion " + potion;
 
         base.Start();
     }
@@ -51,6 +55,7 @@ public class Player : ObjectMovement
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
         potion--;
+        potionText.text = "Potion: " + potion;
 
         base.AttemptMove<T>(xDir, yDir);
 
@@ -70,11 +75,17 @@ public class Player : ObjectMovement
         else if(other.tag == "Red Potion")
         {
             potion += pointPerRedPotion;
+
+            potionText.text = "+" + pointPerRedPotion + " Potion: " + potion;
+
             other.gameObject.SetActive(false);
         }
         else if(other.tag == "Blue Potion")
         {
             potion += pointPerBluePotion;
+
+            potionText.text = "+" + pointPerBluePotion + " Potion: " + potion;
+
             other.gameObject.SetActive(false);
         }
     }
@@ -99,6 +110,7 @@ public class Player : ObjectMovement
     {
         animator.SetTrigger("PlayerHit");
         potion -= loss;
+        potionText.text = "- " + "Potion: " + potion;
         CheckIfGameOver();
     }
 

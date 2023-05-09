@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Red Potion
   - Blocking
+  - Blue Potion
   layers:
   - Default
   - TransparentFX
