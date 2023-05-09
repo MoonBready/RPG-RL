@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3049476402420816633}
   - component: {fileID: 6113130957916046281}
   - component: {fileID: 175336654668246481}
-  - component: {fileID: 770856889}
   - component: {fileID: 3337252953735529239}
   m_Layer: 6
   m_Name: Player
@@ -145,7 +144,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 3049476402420816632}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -156,22 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &770856889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3049476402420816632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7f62691c1aac444bdf75ce6d6bf61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3.7
-  Blocking:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &3337252953735529239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90471e808cc861408e847985380e9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  Blocking:
+  moveTime: 0.1
+  blockingLayer:
     serializedVersion: 2
     m_Bits: 64
   wallDamage: 1

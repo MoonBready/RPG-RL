@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Player : Movement
+public class Player : ObjectMovement
 {
     public int wallDamage = 1;
     public int pointPerRedPotion = 1;
@@ -12,13 +13,14 @@ public class Player : Movement
     private Animator animator;
     private int potion;
 
-    void Start()
+    protected override void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
 
         animator = GetComponent<Animator>();
 
         potion = GameManager.instance.playerPotionNb;
+
+        base.Start();
     }
 
 
@@ -27,30 +29,77 @@ public class Player : Movement
         GameManager.instance.playerPotionNb = potion;
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!GameManager.instance.playersTurn) return;
+
+        int horizontal = 0;
+        int vertical = 0;
+
+        horizontal = (int)Input.GetAxisRaw("Horizontal");
+        vertical = (int)Input.GetAxisRaw("Vertical");
+
+        if (horizontal != 0)
+            vertical = 0;
+
+        if (horizontal != 0 || vertical != 0)
+            AttemptMove<Wall>(horizontal, vertical);
     }
 
 
-    protected void AttemptMove<T>(int xDir, int yDir)
+
+    protected override void AttemptMove<T>(int xDir, int yDir)
     {
         potion--;
+
+        base.AttemptMove<T>(xDir, yDir);
 
         CheckIfGameOver();
 
         GameManager.instance.playersTurn = false;
     }
 
-    protected void OnCantMove<T>(T component)
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Exit")
+        {
+            Invoke("Restart", restartLevelDelay);
+            enabled = false;
+        }
+        else if(other.tag == "Red Potion")
+        {
+            potion += pointPerRedPotion;
+            other.gameObject.SetActive(false);
+        }
+        else if(other.tag == "Blue Potion")
+        {
+            potion += pointPerBluePotion;
+            other.gameObject.SetActive(false);
+        }
+    }
+
+
+    protected override void cantMove<T>(T component)
     {
         Wall hitWall = component as Wall;
-
         hitWall.DamageWall(wallDamage);
-
         animator.SetTrigger("PlayerAttack");
+    }
+
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(0);
+
+    }
+
+
+    public void LosePotion(int loss)
+    {
+        animator.SetTrigger("PlayerHit");
+        potion -= loss;
+        CheckIfGameOver();
     }
 
 
